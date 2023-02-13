@@ -6,10 +6,12 @@ import social3 from "../../assets/Images/social3.jpg";
 import social4 from "../../assets/Images/social4.jpg";
 import loader from "../../assets/loader.svg";
 import "./Auth.css";
+import useUserCollection from "../../Hooks/useUserCollection";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [Image, setImage] = useState(social1);
+  const { login, signup } = useUserCollection();
   let counter = 0;
 
   const ImgArr = [social1, social2, social3, social4];
@@ -31,14 +33,14 @@ const Auth = () => {
     let password = e.target.password.value.trim();
     if (isLogin) {
       if (isLogin && email.length > 0 && password.length > 0) {
-        console.log(email, password);
+        login(email, password);
       } else {
         console.log("cannot be empty");
       }
     } else {
       let username = e.target.username.value.trim();
       if (email.length > 0 && password.length > 0 && username.length > 0) {
-        console.log(email, password, username);
+        signup(email, password, username);
       } else {
         console.log("cannot be empty");
       }
