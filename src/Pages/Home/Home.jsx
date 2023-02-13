@@ -1,7 +1,13 @@
+import useUserCollection from "../../Hooks/useUserCollection";
 import "./Home.css";
 
 const Home = () => {
-  return <div className="home">Home</div>;
+  const { logout } = useUserCollection();
+  return (
+    <div className="home" onClick={logout}>
+      Home
+    </div>
+  );
 };
 
 export default Home;
